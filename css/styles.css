@@ -1,0 +1,753 @@
+/* ==========================================================================
+   Smiling Coast – A Travel Guide to The Gambia
+   Stylesheet (mobile-first: base styles are for small screens, then
+   min-width media queries add layout for larger screens)
+
+   Contents
+   1. Colour and spacing variables
+   2. Base / reset
+   3. Reusable helpers (container, buttons, section titles)
+   4. Header and navigation  ........ FLEXBOX
+   5. Hero  .......................... GRID
+   6. Quick facts  ................... FLEXBOX (wrap)
+   7. Destination cards  ............. GRID (auto-fit + minmax) + FLEXBOX inside cards
+   8. Gallery  ....................... GRID (spanning items)
+   9. Travel tips  ................... GRID (grid-template-areas)
+   10. Plan page: itinerary, table, form
+   11. Footer  ....................... FLEXBOX
+   12. Media queries (tablet and desktop)
+   ========================================================================== */
+
+
+/* 1. Colour and spacing variables
+   -------------------------------------------------------------------------- */
+:root {
+  --color-river: #0b3d5c;       /* deep blue – headings, header */
+  --color-river-light: #e6f0f5;
+  --color-sunset: #d9622b;      /* orange – buttons and accents */
+  --color-sunset-dark: #b44c1c;
+  --color-palm: #2f6b3a;        /* green – tags */
+  --color-sand: #f8f3ea;        /* warm background */
+  --color-text: #1f2a30;
+  --color-muted: #55646c;
+  --color-white: #ffffff;
+  --color-border: #e2d9c8;
+
+  --font-body: "Segoe UI", Roboto, Arial, sans-serif;
+  --font-heading: Georgia, "Times New Roman", serif;
+
+  --space-xs: 0.5rem;
+  --space-s: 1rem;
+  --space-m: 1.5rem;
+  --space-l: 2.5rem;
+  --space-xl: 4rem;
+
+  --radius: 12px;
+  --shadow: 0 4px 14px rgba(11, 61, 92, 0.1);
+}
+
+
+/* 2. Base / reset
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-sand);
+}
+
+/* Flexible media: never wider than its container */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  color: var(--color-river);
+  margin: 0 0 var(--space-s);
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.6rem; }
+h3 { font-size: 1.2rem; }
+
+p {
+  margin: 0 0 var(--space-s);
+}
+
+a {
+  color: var(--color-river);
+}
+
+/* Visible keyboard focus for accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--color-sunset);
+  outline-offset: 3px;
+}
+
+/* "Skip to main content" link – hidden until a keyboard user tabs to it */
+.skip-link {
+  position: absolute;
+  left: var(--space-s);
+  top: -3rem;
+  padding: var(--space-xs) var(--space-s);
+  background: var(--color-white);
+  border-radius: var(--radius);
+  z-index: 10;
+}
+
+.skip-link:focus {
+  top: var(--space-s);
+}
+
+
+/* 3. Reusable helpers
+   -------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: 72rem;   /* max-width instead of a fixed width */
+  margin: 0 auto;
+  padding: 0 var(--space-s);
+}
+
+.container.narrow {
+  max-width: 48rem;
+}
+
+.section {
+  padding: var(--space-l) 0;
+}
+
+.section-alt {
+  background-color: var(--color-river-light);
+}
+
+.section-title {
+  position: relative;
+  padding-bottom: var(--space-xs);
+}
+
+/* Small orange underline under section headings */
+.section-title::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 4px;
+  margin-top: var(--space-xs);
+  background-color: var(--color-sunset);
+  border-radius: 2px;
+}
+
+.section-intro {
+  max-width: 40rem;   /* keeps lines at a readable length */
+  color: var(--color-muted);
+}
+
+.eyebrow {
+  margin-bottom: var(--space-xs);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-sunset-dark);
+}
+
+.lead {
+  font-size: 1.1rem;
+  color: var(--color-muted);
+}
+
+/* Buttons – a FLEXBOX group that wraps on narrow screens */
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+}
+
+.button {
+  display: inline-block;
+  padding: 0.75rem 1.4rem;
+  border: 2px solid var(--color-sunset);
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button-primary {
+  background-color: var(--color-sunset);
+  color: var(--color-white);
+}
+
+.button-primary:hover {
+  background-color: var(--color-sunset-dark);
+  border-color: var(--color-sunset-dark);
+}
+
+.button-outline {
+  background-color: transparent;
+  color: var(--color-sunset-dark);
+}
+
+.button-outline:hover {
+  background-color: var(--color-white);
+}
+
+
+/* 4. Header and navigation – FLEXBOX
+   Flexbox suits the nav because it is a single row of items that need
+   to be spaced out and to wrap when the screen is narrow.
+   -------------------------------------------------------------------------- */
+.site-header {
+  background-color: var(--color-river);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.header-inner {
+  display: flex;
+  flex-direction: column;     /* mobile: logo above the links */
+  align-items: center;
+  gap: var(--space-xs);
+  padding-top: var(--space-s);
+  padding-bottom: var(--space-s);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.logo-mark {
+  color: #f6b84a;
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-xs) var(--space-s);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-list a {
+  display: block;
+  padding: 0.3rem 0.2rem;
+  color: var(--color-white);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-list a:hover,
+.nav-list a[aria-current="page"] {
+  border-bottom-color: #f6b84a;
+}
+
+.nav-list .nav-cta {
+  padding: 0.3rem 0.9rem;
+  background-color: var(--color-sunset);
+  border-radius: 999px;
+  border-bottom: none;
+}
+
+.nav-list .nav-cta:hover {
+  background-color: var(--color-sunset-dark);
+}
+
+
+/* 5. Hero – GRID
+   One column on phones; two columns (text | image) from tablet up.
+   -------------------------------------------------------------------------- */
+.hero {
+  padding: var(--space-l) 0;
+  background: linear-gradient(180deg, #fde9d3 0%, var(--color-sand) 100%);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-l);
+  align-items: center;
+}
+
+.hero-image {
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.page-intro {
+  padding: var(--space-l) 0 var(--space-s);
+  background: linear-gradient(180deg, #fde9d3 0%, var(--color-sand) 100%);
+}
+
+
+/* 6. Quick facts – FLEXBOX with wrapping
+   A simple row of "chips" that wrap onto new lines on small screens.
+   -------------------------------------------------------------------------- */
+.facts {
+  padding-top: var(--space-m);
+}
+
+.fact-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fact {
+  flex: 1 1 12rem;            /* grow, shrink, start at 12rem */
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-s);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-weight: 600;
+}
+
+.fact-label {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--color-muted);
+}
+
+
+/* 7. Destination cards – GRID with repeat(auto-fit, minmax())
+   The grid creates as many columns as will fit (each at least 16rem wide),
+   so it automatically goes from 1 → 2 → 3 columns without extra media queries.
+   -------------------------------------------------------------------------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--space-m);
+}
+
+/* Inside each card, FLEXBOX (column) pushes the footer to the bottom so
+   all cards in a row line up, even when their text lengths differ. */
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--color-white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.card-image {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.card-body {
+  flex: 1;                    /* body fills the remaining height */
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-m);
+}
+
+.card-body p {
+  color: var(--color-muted);
+}
+
+.card-footer {
+  margin-top: auto;           /* push to the bottom of the card */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.tag {
+  padding: 0.2rem 0.7rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-white);
+  background-color: var(--color-palm);
+  border-radius: 999px;
+}
+
+.card-meta {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+
+/* 8. Gallery – GRID
+   Phones: one column. Larger screens: 3 columns, where "wide" images
+   span 2 columns to make a more interesting layout.
+   -------------------------------------------------------------------------- */
+.gallery-section {
+  background-color: var(--color-river-light);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-s);
+}
+
+.gallery-item {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.gallery-item figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: var(--space-xs) var(--space-s);
+  color: var(--color-white);
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.65));
+}
+
+
+/* 9. Travel tips – GRID with grid-template-areas
+   Phones: everything stacks. Desktop: intro across the top, tips on the
+   left and the "Before you go" checklist as a sidebar on the right.
+   -------------------------------------------------------------------------- */
+.tips-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "intro"
+    "tips"
+    "aside";
+  gap: var(--space-m);
+}
+
+.tips-intro { grid-area: intro; }
+.tips-grid  { grid-area: tips; }
+.checklist  { grid-area: aside; }
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: var(--space-s);
+}
+
+.tip {
+  padding: var(--space-m);
+  background-color: var(--color-white);
+  border-left: 5px solid var(--color-sunset);
+  border-radius: var(--radius);
+}
+
+.tip p {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.checklist {
+  align-self: start;
+  padding: var(--space-m);
+  color: var(--color-white);
+  background-color: var(--color-river);
+  border-radius: var(--radius);
+}
+
+.checklist h3 {
+  color: var(--color-white);
+}
+
+.checklist ul {
+  margin: 0 0 var(--space-m);
+  padding-left: 1.2rem;
+}
+
+.checklist li {
+  margin-bottom: var(--space-xs);
+}
+
+
+/* 10. Plan page
+   -------------------------------------------------------------------------- */
+
+/* Itinerary – GRID of day cards (auto-fit, like the destination cards) */
+.itinerary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: var(--space-m);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.day {
+  padding: var(--space-m);
+  background-color: var(--color-white);
+  border-top: 5px solid var(--color-palm);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.day p {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+/* Day header – FLEXBOX lines up the badge and the title */
+.day-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-xs);
+}
+
+.day-header h3 {
+  margin: 0;
+}
+
+.day-number {
+  padding: 0.15rem 0.7rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-white);
+  background-color: var(--color-palm);
+  border-radius: 999px;
+}
+
+/* Seasons table */
+.table-wrap {
+  overflow-x: auto;   /* if the table is ever too wide, only it scrolls – not the page */
+}
+
+.season-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--color-white);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.season-table caption {
+  margin-bottom: var(--space-xs);
+  text-align: left;
+  color: var(--color-muted);
+}
+
+.season-table th,
+.season-table td {
+  padding: 0.75rem var(--space-s);
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.season-table thead th {
+  color: var(--color-white);
+  background-color: var(--color-river);
+}
+
+/* Enquiry form – GRID: one column on phones, two columns on wider screens */
+.enquiry-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-m);
+  padding: var(--space-m);
+  background-color: var(--color-white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 0;
+  min-width: 0;
+}
+
+fieldset.form-field {
+  padding: var(--space-s);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.form-field label,
+.form-field legend {
+  font-weight: 600;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  font: inherit;
+  border: 1px solid #b9ae9a;
+  border-radius: 8px;
+  background-color: var(--color-white);
+}
+
+/* Checkboxes – FLEXBOX row that wraps */
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-m);
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+}
+
+
+/* 11. Footer – FLEXBOX
+   Stacks on phones, becomes a row with space between on larger screens.
+   -------------------------------------------------------------------------- */
+.site-footer {
+  padding: var(--space-l) 0;
+  color: #d8e4ea;
+  background-color: var(--color-river);
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+}
+
+.footer-logo {
+  margin-bottom: 0.25rem;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-links a {
+  color: var(--color-white);
+}
+
+.footer-note {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+
+/* 12. Media queries – mobile-first, using min-width and rem breakpoints
+   -------------------------------------------------------------------------- */
+
+/* Tablet: 40rem (640px) and wider */
+@media (min-width: 40rem) {
+  h1 { font-size: 2.6rem; }
+  h2 { font-size: 2rem; }
+
+  .header-inner {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .section {
+    padding: var(--space-xl) 0;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .enquiry-form {
+    grid-template-columns: repeat(2, 1fr);
+    padding: var(--space-l);
+  }
+
+  .form-field-full {
+    grid-column: 1 / -1;     /* span both columns */
+  }
+
+  .footer-inner {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+/* Desktop: 64rem (1024px) and wider */
+@media (min-width: 64rem) {
+  h1 { font-size: 3rem; }
+
+  .hero {
+    padding: var(--space-xl) 0;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1.1fr 1fr;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .gallery-item-wide {
+    grid-column: span 2;
+  }
+
+  .tips-layout {
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+      "intro intro"
+      "tips  aside";
+  }
+}

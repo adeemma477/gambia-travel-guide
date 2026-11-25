@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7a24b"/><stop offset="0.6" stop-color="#f6c97a"/><stop offset="1" stop-color="#fde3b5"/></linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2d7fa6"/><stop offset="1" stop-color="#0b3d5c"/></linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#sky)"/>
+  <circle cx="520" cy="285" r="70" fill="#fff1c9" opacity="0.9"/>
+  <rect y="280" width="800" height="120" fill="url(#sea)"/>
+  <path d="M0 300 Q200 290 400 300 T800 300" stroke="#9fd0e6" stroke-width="3" fill="none" opacity="0.6"/>
+  <path d="M0 340 Q200 330 400 340 T800 340" stroke="#9fd0e6" stroke-width="2" fill="none" opacity="0.4"/>
+  <path d="M0 380 Q250 350 500 375 T800 365 V500 H0Z" fill="#f2d49b"/>
+  <path d="M0 420 Q300 395 800 430 V500 H0Z" fill="#e8c181"/>
+  <path d="M175 430 C185 330 200 230 240 150" stroke="#5b3a1e" stroke-width="16" fill="none" stroke-linecap="round"/>
+  <g fill="#2f5e2f">
+    <path d="M240 150 C200 120 140 130 100 175 C160 150 200 155 240 150Z"/>
+    <path d="M240 150 C230 100 190 75 150 80 C200 100 220 125 240 150Z"/>
+    <path d="M240 150 C270 100 320 90 360 105 C310 115 270 130 240 150Z"/>
+    <path d="M240 150 C300 140 350 165 380 210 C330 180 290 165 240 150Z"/>
+    <path d="M240 150 C250 110 245 75 225 55 C255 80 260 115 240 150Z"/>
+  </g>
+</svg>

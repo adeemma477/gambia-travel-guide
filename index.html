@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A beginner-friendly travel guide to The Gambia: top destinations, photo gallery and practical travel tips.">
+  <title>Smiling Coast | A Travel Guide to The Gambia</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ===== Header and navigation (Flexbox) ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">
+        <span class="logo-mark" aria-hidden="true">☀</span>
+        Smiling Coast
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="#destinations">Destinations</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#tips">Travel tips</a></li>
+          <li><a class="nav-cta" href="plan.html">Plan your trip</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ===== Section 1: Hero (Grid: text + image) ===== -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow">Travel guide · West Africa</p>
+          <h1>Discover The Gambia, the Smiling Coast of Africa</h1>
+          <p class="lead">
+            Golden beaches, a mighty river, and some of the friendliest people you
+            will ever meet. This guide helps first-time visitors decide where to go,
+            what to see, and how to prepare.
+          </p>
+          <div class="button-group">
+            <a class="button button-primary" href="#destinations">Explore destinations</a>
+            <a class="button button-outline" href="plan.html">See a 5-day itinerary</a>
+          </div>
+        </div>
+        <img class="hero-image" src="images/beach-sunset.svg"
+             alt="Illustration of a palm tree on a sandy beach at sunset"
+             width="800" height="500">
+      </div>
+    </section>
+
+    <!-- ===== Section 2: Quick facts (Flexbox with wrapping) ===== -->
+    <section class="section facts" aria-labelledby="facts-heading">
+      <div class="container">
+        <h2 id="facts-heading" class="section-title">Quick facts</h2>
+        <ul class="fact-list">
+          <li class="fact"><span class="fact-label">Capital</span> Banjul</li>
+          <li class="fact"><span class="fact-label">Currency</span> Dalasi (GMD)</li>
+          <li class="fact"><span class="fact-label">Official language</span> English</li>
+          <li class="fact"><span class="fact-label">Best time to visit</span> November – May</li>
+          <li class="fact"><span class="fact-label">Time zone</span> GMT</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Section 3: Destinations (Grid card layout with auto-fit) ===== -->
+    <section class="section destinations" id="destinations" aria-labelledby="destinations-heading">
+      <div class="container">
+        <h2 id="destinations-heading" class="section-title">Top destinations</h2>
+        <p class="section-intro">
+          The Gambia is small, so you can reach most of these places within a day trip
+          from the coast.
+        </p>
+
+        <div class="card-grid">
+          <article class="card">
+            <img class="card-image" src="images/banjul-arch.svg"
+                 alt="Illustration of Arch 22, a tall gateway monument in Banjul" width="800" height="500">
+            <div class="card-body">
+              <h3 class="card-title">Banjul</h3>
+              <p>The capital sits on an island at the mouth of the river. Climb Arch 22 for city views and explore the busy Albert Market.</p>
+              <div class="card-footer">
+                <span class="tag">City &amp; culture</span>
+                <span class="card-meta">Coast</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img class="card-image" src="images/kunta-kinteh.svg"
+                 alt="Illustration of a small island with old stone ruins in a wide river" width="800" height="500">
+            <div class="card-body">
+              <h3 class="card-title">Kunta Kinteh Island</h3>
+              <p>A UNESCO World Heritage site in the River Gambia and an important place for learning about the history of the slave trade.</p>
+              <div class="card-footer">
+                <span class="tag">History</span>
+                <span class="card-meta">North Bank</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img class="card-image" src="images/abuko-forest.svg"
+                 alt="Illustration of a green forest with tall trees and a flying bird" width="800" height="500">
+            <div class="card-body">
+              <h3 class="card-title">Abuko Nature Reserve</h3>
+              <p>The country's first protected area. Walk shaded forest trails to spot monkeys, monitor lizards and hundreds of bird species.</p>
+              <div class="card-footer">
+                <span class="tag">Wildlife</span>
+                <span class="card-meta">West Coast</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img class="card-image" src="images/crocodile-pool.svg"
+                 alt="Illustration of a calm green pool with a crocodile resting at the edge" width="800" height="500">
+            <div class="card-body">
+              <h3 class="card-title">Kachikally Crocodile Pool</h3>
+              <p>A sacred pool in Bakau, home to calm crocodiles. There is also a small museum about local culture and traditions.</p>
+              <div class="card-footer">
+                <span class="tag">Culture</span>
+                <span class="card-meta">Bakau</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img class="card-image" src="images/tanji-boats.svg"
+                 alt="Illustration of colourful wooden fishing boats on a beach" width="800" height="500">
+            <div class="card-body">
+              <h3 class="card-title">Tanji Fishing Village</h3>
+              <p>Watch colourful boats bring in the day's catch in the late afternoon. It is lively, noisy and a great place for photos.</p>
+              <div class="card-footer">
+                <span class="tag">Local life</span>
+                <span class="card-meta">West Coast</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img class="card-image" src="images/stone-circles.svg"
+                 alt="Illustration of an ancient circle of standing stones on grassland" width="800" height="500">
+            <div class="card-body">
+              <h3 class="card-title">Wassu Stone Circles</h3>
+              <p>Ancient standing stones further upriver, part of the Senegambian Stone Circles World Heritage site. Ideal for a longer trip.</p>
+              <div class="card-footer">
+                <span class="tag">History</span>
+                <span class="card-meta">Upriver</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Section 4: Gallery (Grid with spanning items) ===== -->
+    <section class="section gallery-section" id="gallery" aria-labelledby="gallery-heading">
+      <div class="container">
+        <h2 id="gallery-heading" class="section-title">Gallery</h2>
+        <div class="gallery">
+          <figure class="gallery-item gallery-item-wide">
+            <img src="images/beach-sunset.svg" alt="Palm tree silhouette against an orange sunset over the sea" width="800" height="500">
+            <figcaption>Sunset on the Atlantic coast</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="images/river-boat.svg" alt="A small boat travelling along a wide river between green banks" width="800" height="500">
+            <figcaption>A river trip upriver</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="images/tanji-boats.svg" alt="Colourful fishing boats on the sand" width="800" height="500">
+            <figcaption>Boats at Tanji</figcaption>
+          </figure>
+          <figure class="gallery-item gallery-item-wide">
+            <img src="images/abuko-forest.svg" alt="Tall forest trees with a bird flying overhead" width="800" height="500">
+            <figcaption>Forest trails at Abuko</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Section 5: Travel tips (Grid with named areas) ===== -->
+    <section class="section tips" id="tips" aria-labelledby="tips-heading">
+      <div class="container tips-layout">
+        <div class="tips-intro">
+          <h2 id="tips-heading" class="section-title">Travel tips</h2>
+          <p class="section-intro">A few simple things that will make your first visit easier and more enjoyable.</p>
+        </div>
+
+        <div class="tips-grid">
+          <article class="tip">
+            <h3>Money</h3>
+            <p>Carry some cash in dalasi. Cards work in larger hotels, but markets and taxis usually want cash.</p>
+          </article>
+          <article class="tip">
+            <h3>Getting around</h3>
+            <p>Green "tourist taxis" wait outside hotels. Agree on the price before the trip starts.</p>
+          </article>
+          <article class="tip">
+            <h3>Weather</h3>
+            <p>The dry season (November to May) is sunny and comfortable. The rainy season is hot, humid and very green.</p>
+          </article>
+          <article class="tip">
+            <h3>Respect local customs</h3>
+            <p>Dress modestly away from the beach and always ask before taking photos of people.</p>
+          </article>
+        </div>
+
+        <aside class="checklist" aria-labelledby="checklist-heading">
+          <h3 id="checklist-heading">Before you go</h3>
+          <ul>
+            <li>Check visa and entry rules for your passport</li>
+            <li>Ask a doctor about vaccinations and malaria tablets</li>
+            <li>Pack sunscreen, a hat and insect repellent</li>
+            <li>Bring a UK-style (type G) plug adapter</li>
+            <li>Learn a greeting: "Salaam aleikum" is widely used</li>
+          </ul>
+          <a class="button button-primary" href="plan.html">Plan your trip</a>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer (Flexbox) ===== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-logo">Smiling Coast</p>
+        <p>A student travel guide to The Gambia.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#destinations">Destinations</a></li>
+        <li><a href="plan.html">Plan your trip</a></li>
+      </ul>
+      <p class="footer-note">
+        &copy; 2026 Emmanuel Adenuga · Web Programming 1 project.<br>
+        Illustrations are original SVG artwork made for this site.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
