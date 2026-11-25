@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Plan a trip to The Gambia: a 5-day itinerary, when to go, and a trip enquiry form.">
+  <title>Plan Your Trip | Smiling Coast</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ===== Header and navigation (Flexbox) ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">
+        <span class="logo-mark" aria-hidden="true">☀</span>
+        Smiling Coast
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#destinations">Destinations</a></li>
+          <li><a href="index.html#gallery">Gallery</a></li>
+          <li><a href="index.html#tips">Travel tips</a></li>
+          <li><a class="nav-cta" href="plan.html" aria-current="page">Plan your trip</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ===== Page introduction ===== -->
+    <section class="page-intro">
+      <div class="container">
+        <p class="eyebrow">Plan your trip</p>
+        <h1>Five days on the Smiling Coast</h1>
+        <p class="lead">
+          A relaxed first-visit itinerary that mixes history, nature, local life and
+          beach time, all within easy reach of the coastal resorts.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== Section 1: Itinerary (Grid of day cards) ===== -->
+    <section class="section" id="itinerary" aria-labelledby="itinerary-heading">
+      <div class="container">
+        <h2 id="itinerary-heading" class="section-title">Suggested itinerary</h2>
+        <ol class="itinerary">
+          <li class="day">
+            <div class="day-header">
+              <span class="day-number">Day 1</span>
+              <h3>Banjul city day</h3>
+            </div>
+            <p>Climb Arch 22, visit the National Museum and wander through Albert Market.</p>
+          </li>
+          <li class="day">
+            <div class="day-header">
+              <span class="day-number">Day 2</span>
+              <h3>Bakau and the beach</h3>
+            </div>
+            <p>Morning at Kachikally Crocodile Pool, then relax on the beach at Cape Point.</p>
+          </li>
+          <li class="day">
+            <div class="day-header">
+              <span class="day-number">Day 3</span>
+              <h3>Forest and wildlife</h3>
+            </div>
+            <p>Go birdwatching at Abuko Nature Reserve, then take a canoe ride through the mangroves at Makasutu.</p>
+          </li>
+          <li class="day">
+            <div class="day-header">
+              <span class="day-number">Day 4</span>
+              <h3>Roots river trip</h3>
+            </div>
+            <p>Take a boat up the River Gambia to Kunta Kinteh Island and the villages of Albreda and Juffureh.</p>
+          </li>
+          <li class="day">
+            <div class="day-header">
+              <span class="day-number">Day 5</span>
+              <h3>Fishing villages</h3>
+            </div>
+            <p>See the boats come in at Tanji, then finish the trip with a quiet afternoon at Sanyang beach.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== Section 2: When to go (table) ===== -->
+    <section class="section section-alt" id="seasons" aria-labelledby="seasons-heading">
+      <div class="container">
+        <h2 id="seasons-heading" class="section-title">When to go</h2>
+        <div class="table-wrap">
+          <table class="season-table">
+            <caption>The two main seasons in The Gambia</caption>
+            <thead>
+              <tr>
+                <th scope="col">Season</th>
+                <th scope="col">Months</th>
+                <th scope="col">What to expect</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Dry season</th>
+                <td>November – May</td>
+                <td>Sunny, little rain, the busiest time for visitors and good for birdwatching.</td>
+              </tr>
+              <tr>
+                <th scope="row">Rainy season</th>
+                <td>June – October</td>
+                <td>Hot and humid with heavy showers. The countryside is very green and there are fewer tourists.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Section 3: Enquiry form (Grid form layout) ===== -->
+    <section class="section" id="enquiry" aria-labelledby="enquiry-heading">
+      <div class="container narrow">
+        <h2 id="enquiry-heading" class="section-title">Ask us about your trip</h2>
+        <p class="section-intro">
+          Tell us a little about your plans. (This is a student project, so the form is
+          for demonstration and does not send your details anywhere.)
+        </p>
+
+        <form class="enquiry-form" action="#" method="post">
+          <div class="form-field">
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" placeholder="e.g. Awa Jallow" required>
+          </div>
+
+          <div class="form-field">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          </div>
+
+          <div class="form-field">
+            <label for="month">Travel month</label>
+            <select id="month" name="month">
+              <option value="nov">November</option>
+              <option value="dec">December</option>
+              <option value="jan">January</option>
+              <option value="feb">February</option>
+              <option value="mar">March</option>
+              <option value="apr">April</option>
+              <option value="may">May</option>
+              <option value="rainy">June – October</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="travellers">Number of travellers</label>
+            <input type="number" id="travellers" name="travellers" min="1" max="20" value="2">
+          </div>
+
+          <fieldset class="form-field form-field-full">
+            <legend>What interests you?</legend>
+            <div class="checkbox-group">
+              <label><input type="checkbox" name="interests" value="beaches"> Beaches</label>
+              <label><input type="checkbox" name="interests" value="history"> History</label>
+              <label><input type="checkbox" name="interests" value="wildlife"> Wildlife</label>
+              <label><input type="checkbox" name="interests" value="culture"> Food &amp; culture</label>
+            </div>
+          </fieldset>
+
+          <div class="form-field form-field-full">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Anything else we should know?"></textarea>
+          </div>
+
+          <div class="form-actions form-field-full">
+            <button class="button button-primary" type="submit">Send enquiry</button>
+            <button class="button button-outline" type="reset">Clear form</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer (Flexbox) ===== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-logo">Smiling Coast</p>
+        <p>A student travel guide to The Gambia.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#destinations">Destinations</a></li>
+        <li><a href="plan.html">Plan your trip</a></li>
+      </ul>
+      <p class="footer-note">
+        &copy; 2026 Emmanuel Adenuga · Web Programming 1 project.<br>
+        Illustrations are original SVG artwork made for this site.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
