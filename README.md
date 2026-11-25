@@ -6,8 +6,8 @@
 A small, responsive two-page travel guide for first-time visitors to The Gambia, built with
 semantic HTML and hand-written CSS only (no frameworks, templates or JavaScript).
 
-- **Live site:** https://YOUR-USERNAME.github.io/gambia-travel-guide/
-- **Repository:** https://github.com/YOUR-USERNAME/gambia-travel-guide
+- **Live site:** https://adeemma477.github.io/gambia-travel-guide/
+- **Repository:** https://github.com/adeemma477/gambia-travel-guide
 
 ## Pages
 
